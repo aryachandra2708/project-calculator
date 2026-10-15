@@ -1,0 +1,170 @@
+<!-- 
+  Nama : Arya Chandra Wibowo Mukti
+  NIM  : 250202099
+  Kelas: 2D
+  Praktikum Pemrograman Web Dasar - Pertemuan 5
+  Mini Project: Aplikasi Kalkulator Interaktif (Versi Modifikasi Lengkap)
+-->
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Interaktif Modern - Arya Chandra (250202099)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="brand-wrapper">
+        <div class="logo-icon">🖩</div>
+        <div>
+          <h1 class="logo">Kalkulator Interaktif</h1>
+          <span class="subtitle">Modul 5 Praktikum JavaScript Dasar</span>
+        </div>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="#kalkulator" class="active">Kalkulator</a></li>
+          <li><a href="#riwayat">Riwayat</a></li>
+          <li><a href="#panduan">Panduan</a></li>
+          <li><a href="#profil">Profil</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="main-container">
+      <!-- Section Kalkulator -->
+      <section id="kalkulator" class="kalkulator">
+        <div class="section-header">
+          <span class="badge-tag">Versi Modifikasi 2.0</span>
+          <h2 id="judul">Hitung Dua Angka</h2>
+          <p id="petunjuk">Masukkan dua angka, lalu pilih operasi perhitungan di bawah ini.</p>
+        </div>
+
+        <!-- Kartu Kalkulator -->
+        <article class="kartu">
+          <!-- Form Input Angka -->
+          <div class="input-group">
+            <label for="angka-a">
+              <span class="label-text">Angka Pertama (A)</span>
+              <span class="input-helper">Bilangan riil / bulat</span>
+            </label>
+            <input type="number" id="angka-a" placeholder="Contoh: 15" step="any" />
+          </div>
+
+          <!-- Tombol Aksi Cepat (Swap & Random) -->
+          <div class="quick-tools">
+            <button id="tombol-tukar" type="button" class="btn-utility" title="Tukar nilai Angka A dan B">⇄ Tukar Nilai</button>
+            <button id="tombol-acak" type="button" class="btn-utility" title="Isi dengan angka acak">🎲 Acak Angka</button>
+          </div>
+
+          <div class="input-group">
+            <label for="angka-b">
+              <span class="label-text">Angka Kedua (B)</span>
+              <span class="input-helper">Bilangan riil / bulat</span>
+            </label>
+            <input type="number" id="angka-b" placeholder="Contoh: 3" step="any" />
+          </div>
+
+          <!-- Label Grup Tombol Operasi -->
+          <div class="operator-header">Pilih Operasi Perhitungan</div>
+
+          <!-- Tombol Operasi Utama & Tambahan Modifikasi -->
+          <div class="tombol-grid">
+            <button id="tombol-tambah" type="button" class="btn-op" title="Penjumlahan">+</button>
+            <button id="tombol-kurang" type="button" class="btn-op" title="Pengurangan">-</button>
+            <button id="tombol-kali" type="button" class="btn-op" title="Perkalian">×</button>
+            <button id="tombol-bagi" type="button" class="btn-op" title="Pembagian">÷</button>
+            <!-- Modifikasi: Operasi Tambahan Modulus & Pangkat -->
+            <button id="tombol-modulus" type="button" class="btn-op modif-btn" title="Sisa Bagi (Modulus)">%</button>
+            <button id="tombol-pangkat" type="button" class="btn-op modif-btn" title="Pangkat (A^B)">xʸ</button>
+          </div>
+
+          <!-- Tombol Hapus -->
+          <button id="tombol-hapus" class="hapus" type="button">🗑️ Reset / Hapus Semua</button>
+
+          <!-- Tampilan Hasil Perhitungan -->
+          <div class="hasil-card">
+            <span class="hasil-label">Output Hasil:</span>
+            <p id="hasil" class="hasil">Hasil: 0</p>
+          </div>
+
+          <!-- Statistik & Sifat Hasil -->
+          <div class="stats-panel">
+            <div class="stat-item">
+              <span class="stat-icon">📊</span>
+              <p id="statistik">Jumlah perhitungan: 0</p>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🏷️</span>
+              <p id="sifat-hasil">Sifat hasil: -</p>
+            </div>
+            <!-- Modifikasi: Analisis Bilangan Tambahan -->
+            <div class="stat-item">
+              <span class="stat-icon">🔍</span>
+              <p id="analisis-bilangan">Tipe: -</p>
+            </div>
+          </div>
+
+          <!-- Tombol Panduan -->
+          <button id="tombol-panduan" class="btn-secondary" type="button">📖 Tampilkan Panduan</button>
+        </article>
+      </section>
+
+      <!-- Section Riwayat Perhitungan (Fitur Modifikasi Baru) -->
+      <section id="riwayat" class="panel-box">
+        <div class="panel-header">
+          <h3>🕒 Riwayat Perhitungan</h3>
+          <button id="tombol-bersihkan-riwayat" class="btn-small" type="button">Bersihkan Riwayat</button>
+        </div>
+        <ul id="daftar-riwayat" class="history-list">
+          <li class="empty-history">Belum ada riwayat perhitungan. Lakukan perhitungan di atas!</li>
+        </ul>
+      </section>
+
+      <!-- Section Panduan Penggunaan -->
+      <section id="panduan" class="panel-box" style="display: none">
+        <div class="panel-header">
+          <h2>📘 Panduan Penggunaan Lengkap</h2>
+        </div>
+        <ol class="panduan-list">
+          <li><strong>Input Data:</strong> Masukkan angka pertama dan kedua pada input kolom yang tersedia.</li>
+          <li><strong>Aksi Cepat:</strong> Gunakan tombol <em>Tukar Nilai</em> untuk menukar input atau <em>Acak Angka</em> untuk menguji dengan cepat.</li>
+          <li><strong>Operasi Dasar:</strong> Pilih tombol operasi Tambah (+), Kurang (-), Kali (×), atau Bagi (÷).</li>
+          <li><strong>Operasi Modifikasi:</strong> Tersedia operasi modulus (%) untuk sisa bagi dan perpangkatan (xʸ).</li>
+          <li><strong>Validasi Otomatis:</strong> Aplikasi memvalidasi jika input kosong atau pembagian/modulus dengan angka 0.</li>
+          <li><strong>Statistik & Analisis:</strong> Setiap kalkulasi sukses akan menambah total perhitungan serta menganalisis sifat hasil (Positif/Negatif/Nol serta Ganjil/Genap/Desimal).</li>
+          <li><strong>Riwayat Perhitungan:</strong> Catatan transaksi hitung otomatis tersimpan di bagian riwayat.</li>
+        </ol>
+      </section>
+
+      <!-- Section Profil Pembuat (Modifikasi Mahasiswa) -->
+      <section id="profil" class="panel-box profil-box">
+        <div class="profil-card">
+          <div class="profil-avatar">AC</div>
+          <div class="profil-details">
+            <h3>Arya Chandra Wibowo Mukti</h3>
+            <p><strong>NIM:</strong> 250202099 | <strong>Kelas:</strong> 2D</p>
+            <p><strong>Program Studi:</strong> D3 Teknik Informatika</p>
+            <p><strong>Institusi:</strong> Politeknik Negeri Cilacap (PNC)</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p id="info-pembuat">&copy; 2026 Praktikum Pemrograman Web Dasar | Dibuat oleh Mahasiswa D3 Teknik Informatika</p>
+      <p class="copyright-sub">Eksplorasi Modul 5 JavaScript Interaktif & DOM Manipulation</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
